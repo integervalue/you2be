@@ -1,0 +1,26 @@
+<nav class="navbar">
+    <div class="navbar-logo">
+        <a href="{{ url_for('index') }}">
+            <img src="../static/images/logo.png" alt="Logo">
+        </a>
+    </div>
+
+    <div class="container">
+        <div class="navbar-items">
+            {% if session.get('username') %}
+            <div class="dropdown">
+                <button class="dropbtn">{{ session['username'] }}</button>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('upload') }}">Upload</a>
+                    <a href="{{ url_for('view_playlist') }}">Playlist</a>
+                    <a href="{{ url_for('liked_disliked') }}">View Liked/Disliked</a>
+                    <a href="{{ url_for('logout') }}">Log Out</a>
+                </div>
+            </div>
+            {% else %}
+            <a href="{{ url_for('login') }}" class="navbar-button">Sign In</a>
+            <a href="{{ url_for('register') }}" class="navbar-button">Register</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>

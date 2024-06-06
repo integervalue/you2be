@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<link href="../static/css/auth.css" rel="stylesheet">
+<div class="login-container">
+    <form method="POST" action="{{ url_for('login') }}">
+        <h1>Log in</h1>
+        <div style="margin-bottom: 15px;">
+            <div class="form-label">
+                <label for="username">Please enter your username:</label>
+            </div>
+            <div class="form-input">
+                <input type="text" id="username" name="username" placeholder="Username" required autofocus>
+            </div>
+        </div>
+        <div class="form-group" style="margin-bottom: 15px;">
+            <div class="form-label">
+                <label for="password">Please enter your password:</label>
+            </div>
+            <div class="form-input">
+                <input type="password" id="password" name="password" placeholder="Password" required>
+            </div>
+        </div>
+        <div class="form-group" style="flex-direction: row;">
+            <input type="checkbox" id="showPassword" onclick="togglePasswordVisibility()">
+            <label for="showPassword">Show Password</label>
+        </div>
+        <button type="submit" class="auth-button">Log In</button>
+    </form>
+</div>
+
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<h1>Playlist</h1>
+
+{% if playlist %}
+{% for video in playlist %}
+<div class="video-card">
+  <a href="{{ url_for('view', video_id=video.id) }}">
+    <div class="video-thumbnail">
+      <img src="{{ video.thumbnail_path }}" alt="Video Thumbnail">
+    </div>
+  </a>
+  <div class="video-details">
+    <h2>{{ video.title }}</h2>
+    <p>Uploaded By: {{ video.uploader_username }}</p>
+    <p>Upload Date: {{ video.upload_date }}</p>
+    <p>Likes: {{ video.like_counter }}</p>
+    <p>Dislikes: {{ video.dislike_counter }}</p>
+  </div>
+</div>
+{% endfor %}
+{% else %}
+<p>No videos in the playlist.</p>
+{% endif %}
+
+{% endblock %}

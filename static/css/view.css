@@ -1,0 +1,14 @@
+.like button.active {
+    background-color: #ff0000;
+    color: #ffffff;
+}
+
+.dislike button.active {
+    background-color: #ff0000;
+    color: #ffffff;
+}
+
+.playlist button.active {
+    background-color: #ff0000;
+    color: #ffffff;
+}

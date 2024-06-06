@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+
+{% block content %}
+{% for video in videos %}
+<div class="video-card">
+    <div class="row">
+        <div class="column">
+            <h2>{{ video.title }}</h2>
+        </div>
+        <div class="column" style="display: flex; justify-content: right;">
+            <h4>Uploaded by: {{ video.uploader }}</h4>
+        </div>
+    </div>
+    <a href="{{ url_for('view', video_id=video.id) }}">
+        <div class="video-thumbnail">
+            <img src="{{ video.thumbnail_path }}" alt="Video Thumbnail">
+        </div>
+    </a>
+</div>
+{% endfor %}
+{% endblock %}

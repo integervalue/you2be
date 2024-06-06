@@ -1,0 +1,47 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<link href="../static/css/auth.css" rel="stylesheet">
+
+<div id="password_error" class="error-message"></div>
+
+<div class="register-container">
+    <h1>Register</h1>
+
+    <form method="POST" action="{{ url_for('register') }}">
+        <div class="form-group">
+            <div class="form-label">
+                <label for="username">Please enter your username:</label>
+            </div>
+            <div class="form-input">
+                <input type="text" id="username" name="username" placeholder="Username" required autofocus>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-label">
+                <label for="password">Please enter your password:</label>
+            </div>
+            <div class="form-input">
+                <input type="password" id="password" name="password" placeholder="Password" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-label">
+                <label for="confirm_password">Please confirm password:</label>
+            </div>
+            <div class="form-input">
+                <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm password"
+                    required>
+            </div>
+        </div>
+        <div class="form-group" style="flex-direction: row;">
+            <input type="checkbox" id="showPassword" onclick="togglePasswordVisibility()">
+            <label for="showPassword">Show Password</label>
+        </div>
+        <button type="submit" class="auth-button" id="register_button">Register</button>
+    </form>
+</div>
+
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+
+{% endblock %}

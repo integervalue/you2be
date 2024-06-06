@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<h1>Liked Videos</h1>
+
+{% if liked_videos %}
+{% for video in liked_videos %}
+<div class="video-card">
+    <a href="{{ url_for('view', video_id=video.id) }}">
+        <div class="video-thumbnail">
+            <img src="{{ video.thumbnail_path }}" alt="Video Thumbnail">
+        </div>
+    </a>
+    <div class="video-details">
+        <h2>{{ video.title }}</h2>
+        <p>Uploaded By: {{ video.uploaded_by }}</p>
+        <p>Upload Date: {{ video.upload_date }}</p>
+        <p>Likes: {{ video.like_counter }}</p>
+        <p>Dislikes: {{ video.dislike_counter }}</p>
+    </div>
+</div>
+{% endfor %}
+{% else %}
+<p>No liked videos found.</p>
+{% endif %}
+
+<h1>Disliked Videos</h1>
+
+{% if disliked_videos %}
+{% for video in disliked_videos %}
+<div class="video-card">
+    <a href="{{ url_for('view', video_id=video.id) }}">
+        <div class="video-thumbnail">
+            <img src="{{ video.thumbnail_path }}" alt="Video Thumbnail">
+        </div>
+    </a>
+    <div class="video-details">
+        <h2>{{ video.title }}</h2>
+        <p>Uploaded By: {{ video.uploaded_by }}</p>
+        <p>Upload Date: {{ video.upload_date }}</p>
+        <p>Likes: {{ video.like_counter }}</p>
+        <p>Dislikes: {{ video.dislike_counter }}</p>
+    </div>
+</div>
+{% endfor %}
+{% else %}
+<p>No disliked videos found.</p>
+{% endif %}
+
+{% endblock %}

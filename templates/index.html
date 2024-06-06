@@ -1,0 +1,16 @@
+<!doctype html>
+
+<head>
+    <title>You2Be</title>
+    <link href="../static/css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <div style="margin-bottom: 100px;">
+        {% include 'navbar.html' %}
+    </div>
+
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>

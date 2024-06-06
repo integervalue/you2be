@@ -1,0 +1,47 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<link href="../static/css/view.css" rel="stylesheet">
+
+<div class="video-title">
+    <h1>{{ video.title }}</h1>
+</div>
+
+<div class="video-player">
+    <video controls>
+        <source src="{{ url_for('static', filename='uploads/' + video.file_path) }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+<div class="row" style="margin-top: 15px;">
+    <div class="column">
+        <div class="video-details">
+            <p>Uploaded By: {{ video.uploader_username }}</p>
+            <p>Upload Date: {{ video.upload_date }}</p>
+            <p>Likes: {{ video.like_counter }}</p>
+            <p>Dislikes: {{ video.dislike_counter }}</p>
+        </div>
+    </div>
+    <div class="column">
+        <div class="like">
+            <button id="like-button" video-id="{{ video.id }}" user-id="{{ video.logged_in_user_id }}"
+                onclick="handleLike()" {% if video.reaction_active==1 %}class="active" {% endif %}>Like</button>
+        </div>
+
+        <div class="dislike">
+            <button id="dislike-button" video-id="{{ video.id }}" user-id="{{ video.logged_in_user_id }}"
+                onclick="handleDislike()" {% if video.reaction_active==-1 %}class="active" {% endif %}>Dislike</button>
+        </div>
+
+        <div class="playlist">
+            <button id="add-to-pl-button" video-id="{{ video.id }}" user-id="{{ video.logged_in_user_id }}"
+                onclick="handleAddtoPL()" {% if video.in_playlist==1 %}class="active" {% endif %}>Playlist</button>
+        </div>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/reactions.js') }}"></script>
+<script src="{{ url_for('static', filename='js/playlists.js') }}"></script>
+
+{% endblock %}
